@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: weak-password
+    volumes:
+      - type: bind
+        source: initdb
+        target: /docker-entrypoint-initdb.d
+
+  app:
+    build: .
+    ports:
+      - 8088:8080
+    depends_on:
+      - db
+
+  ## Uncomment the lines below if you want to use adminer to browse the database
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8089:8080

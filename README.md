@@ -30,6 +30,16 @@ Or run this to start the "Hello World" web server:
 crystal build ./src/webapp/hello-world.cr
 ```
 
+Or try this example of a web server that uses a library (known as a "shard" in Crystal land) to read from a Postgres database.  
+(This one's probably better to do outside of a dev container, or you'll be running docker in docker...)
+```bash
+cd /src/postgres
+docker compose up --build -d
+# wait for the app to spin up and the browse ot it in localhost:8088
+# and then clean up afterwards...
+docker compose down -v
+```
+
 
 [devcontainers-spec]: https://containers.dev/
 [crystal-tutorial]: https://crystal-lang.org/reference/1.8/getting_started/
